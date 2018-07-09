@@ -15,3 +15,7 @@ As for the python script execution is very slow (to be tested).
 ## 2. Get a list of S3 scenes at a given location for a given date range
 
 + *s3_scenes_tolist.py*: python script based on the Copernicus Scihub API. From a csv containing a list of sites (in the format: Site_name, lat, lon), extract image names covering the site for a given date range. The user can specify a flag to extract a single image per day, which is the closest to the specified time.
+
+## 3. Convert image list to html links
+
++ *csv_to_html.py*: python script that converts a list of image names, product id obtained from *s3_scenes_tolist.py* into a html document with download links. The .html file can then be opened with DownThemAll: https://www.downthemall.net/ (or another download manager) for fast downloads of S3 images. 
