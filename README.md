@@ -11,3 +11,7 @@ The parameters are passed from a parameter file to the processing xml graph, bot
 As for the python script execution is very slow (to be tested).
 
 + *extract_geotiff2.sh*: a bash processing chain based on the gpt commands. The subset operator is called, writing the bands to a geotiff, then the reprojection operator overwrites the geotiff. This less elegant solution is __much faster__ than the previous 2. 
+
+## 2. Get a list of S3 scenes at a given location for a given date range
+
++ *s3_scenes_tolist.py*: python script based on the Copernicus Scihub API. From a csv containing a list of sites (in the format: Site_name, lat, lon), extract image names covering the site for a given date range. The user can specify a flag to extract a single image per day, which is the closest to the specified time.
