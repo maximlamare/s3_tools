@@ -16,6 +16,7 @@ out_html = Path(sys.argv[2])  # Output file to be written (.html)
 all_dates = []
 with open(str(in_csv), "r") as csvfile:
     rdr = csv.reader(csvfile, delimiter=",")
+    next(rdr)
     for row in rdr:
         print(row[0])
         all_dates.append((row[0], row[1]))
