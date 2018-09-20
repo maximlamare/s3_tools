@@ -49,10 +49,9 @@ for tpg in list(prod.getTiePointGridNames()):
 
     if tpg == 'SZA':
         sza_raster = current_tpg.readPixels(0, 0, width, height, array)
+    elif tpg == 'SAA':
+        saa_raster = current_tpg.readPixels(0, 0, width, height, array)
     else:
-        if tpg == 'SAA':
-            saa_raster = current_tpg.readPixels(0, 0, width, height, array)
-
         current_raster = current_tpg.readPixels(0, 0, width, height, array)
 
         # Store in dictionnary
