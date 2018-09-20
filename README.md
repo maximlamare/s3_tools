@@ -35,7 +35,7 @@ Example run: `./extract_geotiff2.sh /path/to/folder/containing/S3/images /path/t
 # Change the TiePointGrid of a Sentinel 3 OLCI product
 
 ## 1. Change Solar Zenith Angle to Effective Solar Zenith Angle
-+ *extract_geotiff.py*: python script based on snappy. The script opens a S3 OLCI image (in the native format; i.e. xml file in a SEN3 folder), resizes the TiePointGrids (TPG) to the scene size (this was necessary to obtain an acceptable resolution for the new TPG), and converts the SZA TPG to an effective SZA TPG( sun effective incident angle to the local tilt of the surface). 
++ *extract_geotiff.py*: python script based on snappy. Calls the function *topo_ops.py*. The script opens a S3 OLCI image (in the native format; i.e. xml file in a SEN3 folder), resizes the TiePointGrids (TPG) to the scene size (this was necessary to obtain an acceptable resolution for the new TPG), and converts the SZA TPG to an effective SZA TPG( sun effective incident angle to the local tilt of the surface). 
 See [this paper](https://doi.org/10.5194/tc-11-1091-2017).
 Although this script may not be of use to users, it could serve as a base for people wishing to modify a TiePointGrid in an OLCI image. If interest is expressed, I will make a generic version of the script.
 Example run: `python extract_geotiff.py /path/to/Sentinel3/xfdumanisfest.xml /path/to/target/folder`.
