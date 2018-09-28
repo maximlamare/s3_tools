@@ -24,10 +24,10 @@ do
 
     	# Run subset to keep bands (later pass bands to arguments)
     	gpt subset -Ssource=$elem/xfdumanifest.xml -PcopyMetadata='false' \
-    	-PsourceBands=$bands  -t $out_folder/$name -f GeoTiff
+    	-PsourceBands=$bands  -t $out_folder/$name -f GeoTIFF-BigTIFF
 
     	# Run reproject to get to correct projection.
     	gpt reproject -Ssource=$out_folder/$name.tif -Pcrs=$epsg \
-    	-PnoDataValue=-9999 -t $out_folder/$name -f GeoTiff
+    	-PnoDataValue=-9999 -t $out_folder/$name -f GeoTIFF-BigTIFF
     fi
 done
