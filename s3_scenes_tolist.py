@@ -91,9 +91,6 @@ for site in sites:
     # Keep only unique entries
     unique_all = list(set(all_list))
 
-    # Sort list based on datetime
-    unique_all.sort(key=lambda tup: tup[2])
-
     # If there are reprocessed 2018 scenes in the list
     sub_2018 = [x for x in unique_all if datetime.strptime(
         x[0].split('_')[9], '%Y%m%dT%H%M%S').year == 2018]
@@ -102,10 +99,15 @@ for site in sites:
 
         # Find the last date in 2018 dates
         # Append missing 2017 processed data
-        sub_2017 = [x for x in unique_all if x[2] > sub_2018[-1][2]]
+        sub_2017 = [x for x in unique_all if
+                    datetime.strptime(x[0].split('_')[9],
+                                      '%Y%m%dT%H%M%S').year < 2018]
 
         # Join lists
         unique_all = sub_2018 + sub_2017
+
+    # Sort list based on datetime
+    unique_all.sort(key=lambda tup: tup[2])
 
     # If option selected to get 1 image / day at a specific time
     if args.time_sort:
