@@ -130,17 +130,29 @@ for site in sites:
 
     if sub_2018:
 
-        # Find the last date in 2018 dates
-        # Append missing 2017 processed data
+        # Fetch the non-2018 reprocessed data, only keep if difference larger
+        # than 15 minutes
         sub_2017 = [
             x
             for x in unique_all
             if datetime.strptime(x[0].split("_")[9], "%Y%m%dT%H%M%S").year
             < 2018
         ]
+        # List dates in 2018
+        dates18 = [x[2] for x in sub_2018]
+
+        # Keep entries larger than 15 minutes
+        sub_17 = [
+            x
+            for x in sub_2017
+            if (
+                x[2] - min(dates18, key=lambda d: abs(d - x[2]))
+            ).total_seconds()
+            > 900
+        ]
 
         # Join lists
-        unique_all = sub_2018 + sub_2017
+        unique_all = sub_2018 + sub_17
 
     # Sort list based on datetime
     unique_all.sort(key=lambda tup: tup[2])
