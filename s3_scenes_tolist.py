@@ -182,3 +182,10 @@ for site in sites:
         csv_out = csv.writer(outcsv)
         for row in unique_all:
             csv_out.writerow((row[0], row[1]))
+
+    # Save links
+    outlinks = site_output.joinpath("download_links.txt")
+    baseurl = "https://scihub.copernicus.eu/s3/odata/v1/Products("
+    with open(str(outlinks), "w") as cartfile:
+        for prod in unique_all:
+            cartfile.write("%s%%27%s%%27)/$value\n" % (baseurl, prod[1]))
